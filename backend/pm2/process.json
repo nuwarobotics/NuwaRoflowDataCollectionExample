@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name": "nuwa.api.workflow",
+            "cwd": "./src/",
+            "watch": true,
+            "script": "server.js",
+            "log_date_format": "YYYY-MM-DD HH:mm:ss.SSS Z",
+            "max_memory_restart": "500M",
+            "merge_logs": true,
+            "exec_mode": "fork",
+            "autorestart": true,
+            "restart_delay": 1000,
+            "kill_timeout": 30000,
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "env_dev": {
+            },
+            "env_uat": {
+            },
+            "env_stg": {
+            },
+            "env_prd": {
+            },
+            "env_inject": {}
+        }
+    ]
+}

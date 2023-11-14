@@ -1,0 +1,54 @@
+version: '3.4'
+services:
+  ntuh:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    container_name: ntuh
+    restart: always
+    ports:
+      - '8086:8086'
+    networks:
+      - mynet
+    depends_on:
+      nginx:
+        condition: service_started
+      mongo:
+        condition: service_healthy
+    links:
+      - mongo
+    command: ['pm2-docker', '/usr/app/pm2/process.json']
+      
+  nginx:
+    build:
+      context: .
+      dockerfile: ./proxy-service/Dockerfile
+    container_name: nginx
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - mynet
+
+  mongo:
+    image: mongo:3.6
+    container_name: mongo
+    restart: always
+    volumes:
+      - '/usr/local/mongodb/data:/data/db'
+      - '/usr/local/mongodb/logs:/var/log/mongodb'
+      - './conf/mongod.conf:/etc/mongod.conf'
+    ports:
+      - '27017:27017'
+    networks:
+      - mynet
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    command: ['-f', '/etc/mongod.conf']
+networks:
+  mynet:
+    external: true

@@ -1,0 +1,9 @@
+node_modules/
+.vscode/
+.git/
+.gitignore
+.DS_Store
+docker-compose.yml
+README.md
+pm2*.json
+workflow/
