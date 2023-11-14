@@ -1,12 +1,3 @@
-<style scoped>
-table {
-  font-size: 11pt;
-}
-pre {
-  font-size: 11pt;
-}
-</style>
-
 # Data Collection
 
 #### Edit Record
