@@ -1,11 +1,3 @@
-# Data Collection
-
-#### Edit Record
-
-|Modify date|Version|Editor|Description|
-|:----|:----|:----|:----|
-|2023-11-14| 1.0.0    |Sam|deploy flow and add get variable API, upload data collection of variable API for hook |
-
 #### About
 
 - 該專案提供了完整數據收集功能，包括前端網頁、微服務、網頁伺服器、資料庫等項目，並透過docker-compose管理container.
