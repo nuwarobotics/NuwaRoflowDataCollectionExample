@@ -1,8 +1,8 @@
 #### About
 
-- 該專案提供了完整數據收集功能，包括前端網頁、微服務、網頁伺服器、資料庫等項目，並透過docker-compose管理container.
+- The project constitutes a data collection service, encompassing front-end web pages, microservices, web servers, databases, and the like. Container management is facilitated through docker-compose.
 
-- Hook API說明文件.
+- Documentation elucidating the Hook API.
 
 <br>
 
@@ -33,13 +33,13 @@
 
 <br>
 
-#### Nginx proxy
+#### NGINX proxy
 
-- 透過Nginx，將協助我們將URL請求導向對應的服務，如當URL請求為/v1/workflow時，則導向api container，反之則返回靜態網頁.
+- Through NGINX, it is possible to proxy URL requests to the services. When the URL request is for /v1/workflow, it will reverse proxy to the API container; otherwise, it will reverse proxy to the static web page.
 
-- 此外，配置上可透過listen 443 ssl default_server、ssl_certificate、ssl_certificate_key配置來啟用SSL，如啟用，請自行配置SSL憑證.
+- Additionally, configuration may include enabling SSL through directives such as listen 443 ssl default_server, ssl_certificate, and ssl_certificate_key.
 
-- Nginx相關配置檔可到proxy-service/nginx.conf進行修改.
+- The configuration file is located at proxy-service/nginx.conf.
 
 ```
 upstream api {
@@ -104,7 +104,7 @@ server {
 
 #### Dokcer Compose Configure
 
-腳本包含了Backend API、前端網頁、網頁伺服器與Mongo資料庫相關配置如下
+- The docker-compose script encompasses the Backend API, front-end web pages, NGINX, and MongoDB database, with configurations as follows
 
 ```
 docker compose
@@ -146,7 +146,6 @@ services:
     container_name: mongo
     restart: always
     volumes:
-      # 請確認目錄權限，是否有權限進行讀取
       - '/usr/local/mongodb/data:/data/db'
       - '/usr/local/mongodb/logs:/var/log/mongodb'
       - './conf/mongod.conf:/etc/mongod.conf'
@@ -167,7 +166,7 @@ networks:
 
 <br>
 
-#### 運行所有Container
+#### Run Containers
 
 ```
 docker-compose up -d --build workflow
@@ -175,7 +174,7 @@ docker-compose up -d --build workflow
 
 <br>
 
-#### 停止所有Container
+#### Stop Containers
 
 ```
 docker-compose down
@@ -183,12 +182,12 @@ docker-compose down
 
 <br>
 
-#### 頁面測試
+#### Webpage test
 
 ``` 
-test
-# Username: "admin" and Password: "123456"
-- http://localhost:80
+- Username: "admin"
+- Password: "123456"
+- URL: http://localhost:80
 ```
 
 <br>
@@ -276,7 +275,7 @@ HTTP_CODE=200
 |field|type|describe|
 |:----|:----|:----|
 |sn|String|robot serial number|
-|sessionId|String|session id ([a-z, 0-9]{11}位隨機數 + timestamp (毫秒))|
+|sessionId|String|session id ([a-z, 0-9]{11} + timestamp (ms))|
 |variables|Array|variable collection|
 |varName|String|variable name|
 |value|String or Number|variable value|
