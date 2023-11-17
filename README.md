@@ -4,8 +4,6 @@
 
 - Documentation elucidating the Hook API.
 
-<br>
-
 #### Structure
 
     services
@@ -30,8 +28,6 @@
       │   > PORT 27017
       │
       └── README.md
-
-<br>
 
 #### NGINX proxy
 
@@ -100,8 +96,6 @@ server {
 }
 ```
 
-<br>
-
 #### Dokcer Compose Configure
 
 - The docker-compose script encompasses the Backend API, front-end web pages, NGINX, and MongoDB database, with configurations as follows
@@ -164,23 +158,17 @@ networks:
     external: true
 ```
 
-<br>
-
 #### Run Containers
 
 ```
 docker-compose up -d --build workflow
 ```
 
-<br>
-
 #### Stop Containers
 
 ```
 docker-compose down
 ```
-
-<br>
 
 #### Webpage test
 
@@ -189,8 +177,6 @@ docker-compose down
 - Password: "123456"
 - URL: http://localhost:80
 ```
-
-<br>
 
 #### API Description
 
@@ -219,8 +205,6 @@ HTTP_CODE=400
   }
 }
 ```
-
-<br>
 
 #### Get Vaiable Information (hook)
 
@@ -251,13 +235,7 @@ HTTP_CODE=200
   }
 }
 ```
-
-<br>
-
 ---
-
-<br>
-
 
 #### Upload Data (hook)
 
@@ -280,7 +258,6 @@ HTTP_CODE=200
 |varName|String|variable name|
 |value|String or Number|variable value|
 |timestamp|Int|// 1687183523|
-
 
 ##### Request
 
